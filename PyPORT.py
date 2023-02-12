@@ -14,11 +14,18 @@ print("[+] Welcomet to PyPORT [+]")
 
 host=input("Enter the IP_ADDRESS to SCAN: ")
 
+
 def port_scan(port):
-    if sock.connect_ex((host,port)):
-        print(colored(f"Port {port} is Closed.",'red'))
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.settimeout(5)
+    if s:
+        result = s.connect_ex((host, port))
+        if result == 0:
+            print(colored(f"Port {port} is open",'green'))
+        s.close()
     else:
-        print(colored(f"Port {port} is Open.",'green'))
+        print("Failed to create socket")
+
 
 Num=int(input('''[+] How many port you want to scan? [+]
         [+] 1= For scanning one port enter 1
@@ -37,15 +44,11 @@ elif Num==2:
         port_scan(i)
 
 elif Num==3:
-    print('''More than 100 ports cannot be scanned at once.
-    so,you can scan 100 ports like from 1-100 or 300-400
-    ''')
-    f=int(input("Enter Starting port of Scan: "))
-    l=int(input("Enter End port of Scan: "))
+    print('''You can scan number of ports like this:''')
+    f=int(input("Enter Starting port to Scan: "))
+    l=int(input("Enter End port to Scan: "))
     for i in range(f,l):
         port_scan(i)
 
 else:
     print("Please Enter form [1-3] According to Instruction")
-
-
