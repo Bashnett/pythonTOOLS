@@ -4,9 +4,6 @@ lipo=[]
 import os
 from termcolor import colored
 import socket
-sock=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-socket.setdefaulttimeout(10)
-
 
 os.system("figlet PyPORT")
 
@@ -16,8 +13,8 @@ host=input("Enter the IP_ADDRESS to SCAN: ")
 
 
 def port_scan(port):
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.settimeout(5)
+    s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+    s.settimeout(10)
     if s:
         result = s.connect_ex((host, port))
         if result == 0:
