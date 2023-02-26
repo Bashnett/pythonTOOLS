@@ -1,11 +1,24 @@
 #!/bin/python3
 lipo=[]
 
-import os
 from termcolor import colored
 import socket
 
-os.system("figlet PyPORT")
+G = '\033[32m'
+R = '\x1b[31m'  # Red color escape code
+W = '\x1b[0m'   # Reset color escape code
+Y = '\x1b[33m'  # Yellow color escape code
+
+print('''%s                                                 
+   ____        ____   ___  ____ _____ 
+|  _ \ _   _|  _ \ / _ \|  _ \_   _|
+| |_) | | | | |_) | | | | |_) || |  
+|  __/| |_| |  __/| |_| |  _ < | |  
+|_|    \__, |_|    \___/|_| \_\|_|  
+       |___/                         %s%s
+                                        
+            # Coded by potT                                 
+'''%(R,W,G))
 
 print(colored("[+] Welcomet to PyPORT [+]\n",'blue'))
 
